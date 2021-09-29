@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "neural-networks"
+version = "0.1.0"
+description = ""
+authors = ["Kelvin Ducray <kelvin.ducray@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+torch = "^1.9.1"
+pytorch-lightning = "^1.4.8"
+torchvision = "^0.10.1"
+pydantic = "^1.8.2"
+torchviz = "^0.0.2"
+
+[tool.poetry.dev-dependencies]
+jupyter = "^1.0.0"
+black = "^21.9b0"
+blackcellmagic = "^0.0.3"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
