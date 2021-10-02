@@ -133,3 +133,6 @@ dmypy.json
 
 # Datasets
 data/*
+
+# Logs
+lightning_logs/*

@@ -11,6 +11,7 @@ pytorch-lightning = "^1.4.8"
 torchvision = "^0.10.1"
 pydantic = "^1.8.2"
 torchviz = "^0.0.2"
+torch-tb-profiler = "^0.2.1"
 
 [tool.poetry.dev-dependencies]
 jupyter = "^1.0.0"

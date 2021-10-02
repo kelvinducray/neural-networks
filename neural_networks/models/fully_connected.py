@@ -1,19 +1,11 @@
-from torch import nn
+from torch.nn import Linear, ReLU, Sequential
 
 
-class FullyConnected(nn.Module):
-    def __init__(self) -> None:
-        super(FullyConnected, self).__init__()
-        self.flatten = nn.Flatten()
-        self.linear_relu_stack = nn.Sequential(
-            nn.Linear(28 * 28, 512),
-            nn.ReLU(),
-            nn.Linear(512, 512),
-            nn.ReLU(),
-            nn.Linear(512, 10),
-        )
-
-    def forward(self, x):
-        x = self.flatten(x)
-        logits = self.linear_relu_stack(x)
-        return logits
+def init_fully_connected() -> Sequential:
+    return Sequential(
+        Linear(28 * 28, 512),
+        ReLU(),
+        Linear(512, 512),
+        ReLU(),
+        Linear(512, 10),
+    )
