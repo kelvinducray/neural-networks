@@ -1,18 +1,26 @@
 import pytorch_lightning as pl
 from torch import Tensor
-from torch.nn import CrossEntropyLoss, Flatten
+from torch.nn import CrossEntropyLoss, Flatten, Linear, ReLU, Sequential
 from torch.optim import SGD, Optimizer
-
-from ..models.fully_connected import init_fully_connected
 
 
 class FullyConnectedModule(pl.LightningModule):
     def __init__(self) -> None:
         super().__init__()
-        self.flatten = Flatten()
-        self.network = init_fully_connected()
+
+        self.network = self._get_fully_connected()
         self.criterion = CrossEntropyLoss()
-        self.type_check = False
+        self.flatten = Flatten()
+
+    @staticmethod
+    def _get_fully_connected() -> Sequential:
+        return Sequential(
+            Linear(28 * 28, 512),
+            ReLU(),
+            Linear(512, 512),
+            ReLU(),
+            Linear(512, 10),
+        )
 
     def forward(self, x) -> Tensor:
         x = self.flatten(x)
